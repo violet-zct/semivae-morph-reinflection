@@ -1,3 +1,6 @@
+# obj dump directory
+obj/*
+
 *.pyc
 *.log
 *.out

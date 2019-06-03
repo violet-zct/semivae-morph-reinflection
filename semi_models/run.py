@@ -62,7 +62,8 @@ def main(config):
     check_att = False
 
     logging.info("Process data.....")
-    voc_size, class_num, label_list, ix_to_char, ix_to_label, ix_to_tag, x_test_src, x_test_tgt, y_test_tgt = data_sup.preprocess(config["add_uns"])
+    voc_size, class_num, label_list, ix_to_char, ix_to_label, x_test_src, x_test_tgt, y_test_tgt = data_sup.preprocess(config["add_uns"])
+
     logging.info("Done.")
 
     logging.info(ix_to_char)
@@ -113,7 +114,7 @@ def main(config):
     if config['test']:
         genAccFreq = 100
         if config['loadfrom'] is None:
-            assert False, "Load Path not Provided"    
+            assert False, "Load Path not Provided"
 
     ssl_vae = SSL_VAE(rng, config)
     logging.info("Start building and compiling the model....")
@@ -268,7 +269,7 @@ def main(config):
                     ends = test_batches[i][1]
                     x_test_tgt_batch = x_test_tgt[starts:ends]
                     y_test_tgt_batch = y_test_tgt[starts:ends]
-  
+
                     test_x_tgt, _, test_y_tgt = data_sup.prepare_xy_batch(x_test_tgt_batch, y_test_tgt_batch,
                                                                           label_list)
                     # test_x_tgt, _, test_y_tgt = data_sup.prepare_xy_batch(x_tgt_batch, y_tgt_batch, label_list)
@@ -395,7 +396,7 @@ def main(config):
             tot_obj_u += obj_u
             tot_obj_pre_l += q_y_x_loss_l
             tot_obj_acc_l += accl
-            
+
         epc += 1
         logging.info('[Epoch %d] cumulative loss = %.3f, avg. labeled loss = %.3f, '
                      'avg. labeled pred loss = %f,  avg. unlabeled loss = %.3f, '
