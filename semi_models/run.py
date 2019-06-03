@@ -304,9 +304,9 @@ def main(config):
 
                     src_word = [ix_to_char[c] for c in x_test_src[i]]
                     tgt_word = [ix_to_char[c] for c in x_test_tgt[i]]
-                    logging.info("******INFLECTION GENARATION*********")
-                    logging.info("Source word: %s", u" ".join(src_word))
-                    logging.info("Target word: %s", u" ".join(tgt_word))
+                    #logging.info("******INFLECTION GENARATION*********")
+                    #logging.info("Source word: %s", u" ".join(src_word))
+                    #ogging.info("Target word: %s", u" ".join(tgt_word))
                     # score = score / np.array([len(s) for s in sample])
                     word = sample[np.array(score).argmin()]
                     gen_word = []
@@ -315,8 +315,8 @@ def main(config):
                             break
                         else:
                             gen_word.append(ix_to_char[c])
-                    logging.info("Sample word: %s", u" ".join(gen_word))
-                    logging.info("***********************************")
+                    #ogging.info("Sample word: %s", u" ".join(gen_word))
+                    #ogging.info("***********************************")
                     if ''.join(tgt_word) == ''.join(gen_word):
                         corr_gen += 1
 
@@ -327,8 +327,8 @@ def main(config):
                     sample_at, score_at = ssl_vae.decoder.get_sample(cxt_at, cxt_mask_at, fixed_cxt_at, dec_init_at,
                                                                      k=5, maxlen=50, stochastic=False)
                     tgt_word = [ix_to_char[c] for c in x_test_tgt[i]]
-                    logging.info("*******AUTOENCODER************")
-                    logging.info("Origin word: %s", u" ".join(tgt_word))
+                    #ogging.info("*******AUTOENCODER************")
+                    #ogging.info("Origin word: %s", u" ".join(tgt_word))
                     word = sample_at[np.array(score_at).argmin()]
                     gen_word = []
                     for c in word:
@@ -336,8 +336,8 @@ def main(config):
                             break
                         else:
                             gen_word.append(ix_to_char[c])
-                    logging.info("Sample word: %s", u" ".join(gen_word))
-                    logging.info("***********************************")
+                    #ogging.info("Sample word: %s", u" ".join(gen_word))
+                    #ogging.info("***********************************")
                     if ''.join(tgt_word) == ''.join(gen_word):
                         corr += 1
                 logging.info(
